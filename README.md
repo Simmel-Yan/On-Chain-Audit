@@ -5,10 +5,17 @@ A [keystore](https://goethereumbook.org/keystore/) is a file recording encrypted
 The keystore will be useful when we deploy contracts.
 
 ## Compile Contracts
-use [remix online IDE](https://remix.ethereum.org/) to compile contracts `./contracts/VRF.sol` and `./contracts/testVRF.sol`, you'll get `VRF.abi`, `VRF.bin` (saved in `./contract_VRF/`), and `testVRF.abi`, `testVRF.bin` (saved in `./contract_testVRF/`).
+use [remix online IDE](https://remix.ethereum.org/) to compile contracts `./contracts/VRF.sol` and `./contracts/testVRF.sol`, you'll get `VRF.abi`, `VRF.bin` (we save them in `./contract_VRF/`), and `testVRF.abi`, `testVRF.bin` (saved in `./contract_testVRF/`).
 
-Then generate go files using following commands:
-  > cd contract_VRF
-  > abigen --bin=VRF.bin --abi=VRF.abi --pkg=vrf --out=VRF.go
-  > cd ../contract_testVRF
-  > abigen --bin=testVRF.bin --abi=testVRF.abi --pkg=testVRF --out=testVRF.go  
+Then open terminal and generate go files using following commands:
+```
+> cd contract_VRF
+> abigen --bin=VRF.bin --abi=VRF.abi --pkg=vrf --out=VRF.go
+> cd ../contract_testVRF
+> abigen --bin=testVRF.bin --abi=testVRF.abi --pkg=testVRF --out=testVRF.go  
+```
+These commands generate `VRF.go` and `testVRF.go`, which are used to deploy and call contracts.
+
+## Deploy Contracts
+
+## Call Contracts
