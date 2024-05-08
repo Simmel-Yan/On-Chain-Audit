@@ -1,7 +1,7 @@
 package main
 
 import (
-	"callEthereum/contract_testVRF"
+	testVRF "On-Chain-Audit/contract_testVRF"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
