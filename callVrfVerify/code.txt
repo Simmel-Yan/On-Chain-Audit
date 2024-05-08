@@ -1,0 +1,66 @@
+此部分代码为callVrfVerify.go替换掉的代码，功能是根据给定的字符串得到publicKey，pi，message
+
+        pX := "2c8c31fc9f990c6b55e3865a184a4ce50e09481f2eaeb3e60ec1cea13a6ae645"
+		publicX := new(big.Int)
+		publicX.SetString(pX, 16)
+		if publicX.Sign() == 0 {
+			fmt.Println("publicX字符串不是有效的输入")
+			return
+		}
+
+		pY := "64b95e4fdb6948c0386e189b006a29f686769b011704275e4459822dc3328085"
+		publicY := new(big.Int)
+		publicY.SetString(pY, 16)
+		if publicY.Sign() == 0 {
+			fmt.Println("publicY字符串不是有效的输入")
+			return
+		}
+
+		publicKey := [2]*big.Int{publicX, publicY}
+
+		gX := "236b839cf3dfe500474e2a16ad08ba38d60c404056bd7106c17d9659abbb5a28"
+		gammaX := new(big.Int)
+		gammaX.SetString(gX, 16)
+		if gammaX.Sign() == 0 {
+			fmt.Println("gammaX字符串不是有效的输入")
+			return
+		}
+
+		gY := "540890aee8abd1c1564bb77ebfed1d942a540e0cbe14816721a434d5b582ce0f"
+		gammaY := new(big.Int)
+		gammaY.SetString(gY, 16)
+		if gammaY.Sign() == 0 {
+			fmt.Println("gammaY字符串不是有效的输入")
+			return
+		}
+
+		cString := "9479c7e36efb380a9e9dc5e4c4843b2c"
+		c := new(big.Int)
+		c.SetString(cString, 16)
+		if c.Sign() == 0 {
+			fmt.Println("Pi-c字符串不是有效的输入")
+			return
+		}
+
+		sString := "1c204dc6cc4ec751df30dc3110330c8ee4ff70c6633cb7115c9a97d3581c57c0"
+		s := new(big.Int)
+		s.SetString(sString, 16)
+		if s.Sign() == 0 {
+			fmt.Println("Pi-s字符串不是有效的输入")
+			return
+		}
+		pi := [4]*big.Int{gammaX, gammaY, c, s}
+
+		message, _ := hex.DecodeString("73616d706c6573616d706c6573616d706c6573616d706c6573616d706c6573616d706c6573616d706c6573616d706c65")
+
+		// write to contract
+		res, err := instance.Verify(&bind.CallOpts{
+			Pending:     false,
+			From:        accountAddress,
+			BlockNumber: nil,
+			Context:     nil,
+		}, publicKey, pi, message)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("verify result=", res)
