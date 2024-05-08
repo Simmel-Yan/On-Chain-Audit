@@ -5,7 +5,9 @@ A [keystore](https://goethereumbook.org/keystore/) is a file recording encrypted
 The keystore will be useful when we deploy contracts.
 
 ## Compile Contracts
-use [remix online IDE](https://remix.ethereum.org/) to compile contracts `./contracts/VRF.sol` and `./contracts/testVRF.sol`, you'll get `VRF.abi`, `VRF.bin` (we save them in `./contract_VRF/`), and `testVRF.abi`, `testVRF.bin` (saved in `./contract_testVRF/`).
+To verify the vrf output on-chain, we have two contracts: contract VRF (saved in `./contracts/VRF.sol`) and contract testVRF (saved in `./contracts/testVRF.sol`). The latter one calls the functions in the former one, and the Golang client only calls the latter contract during practical use.
+
+use [remix online IDE](https://remix.ethereum.org/) to compile these two contracts, you'll get `VRF.abi`, `VRF.bin` (we save them in `./contract_VRF/`), and `testVRF.abi`, `testVRF.bin` (saved in `./contract_testVRF/`).
 
 Then open terminal and generate go files using following commands:
 ```
@@ -17,5 +19,14 @@ Then open terminal and generate go files using following commands:
 These commands generate `VRF.go` and `testVRF.go`, which are used to deploy and call contracts.
 
 ## Deploy Contracts
+Before deploying the contracts, make sure that you have initiates the Ethereum test chain. In this project we use [Ganache](https://archive.trufflesuite.com/ganache/), because it is easy to use.
+
+Run `./deployVRF/deployVRF.go` and `./deployTestVRF/deployTestVRF.go` to deploy contract VRF and testVRF, as follows. 
+```
+> cd deployVRF
+> go run deployVRF.go
+> cd ../deployTestVRF
+> go run deployTestVRF.go
+```
 
 ## Call Contracts
