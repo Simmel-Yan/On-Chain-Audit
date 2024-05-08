@@ -33,3 +33,4 @@ To deploy contract VRF and testVRF, run `deployVRF.go` and `deployTestVRF.go`, a
 We can check the deployed contracts on Ganache desktop, and the contract address will be used when we call the contract. 
 
 ## Call Contracts
+The Go client calls contract testVRF's interface `Verify` to verify the vrf output. The contract returns the verification result (true or false).
