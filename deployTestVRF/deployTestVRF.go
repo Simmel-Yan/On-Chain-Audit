@@ -1,7 +1,7 @@
 package main
 
 import (
-	"callEthereum/contract_testVRF"
+	"On-Chain-Audit/contract_testVRF"
 	"context"
 	"crypto/ecdsa"
 	"fmt"
