@@ -19,14 +19,17 @@ Then open terminal and generate go files using following commands:
 These commands generate `VRF.go` and `testVRF.go`, which are used to deploy and call contracts.
 
 ## Deploy Contracts
-Before deploying the contracts, make sure that you have initiates the Ethereum test chain. In this project we use [Ganache](https://archive.trufflesuite.com/ganache/), because it is easy to use.
+Before deploying the contracts, make sure that you have initiates the Ethereum test chain. In this project we use [Ganache](https://archive.trufflesuite.com/ganache/), because it is easy to use. The default port of Ganache is 7545, which is useful when we deploy a contract. (See `./deployVRF/deployVRF.go` and `./deployTestVRF/deployTestVRF.go` line 18.)
 
-Run `./deployVRF/deployVRF.go` and `./deployTestVRF/deployTestVRF.go` to deploy contract VRF and testVRF, as follows. 
+In this part, the generated keystore is used, to. (See `deployVRF.go` and `deployTestVRF.go` line 46.) 
+
+To deploy contract VRF and testVRF, run `deployVRF.go` and `deployTestVRF.go`, as follows. 
 ```
 > cd deployVRF
 > go run deployVRF.go
 > cd ../deployTestVRF
 > go run deployTestVRF.go
 ```
+We can check the deployed contracts on Ganache desktop, and the contract address will be used when we call the contract. 
 
 ## Call Contracts
